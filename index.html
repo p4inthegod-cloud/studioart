@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LavenderStudio — дизайн упаковки и брендинга</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4eff8;
+      --bg-2: #efe8f5;
+      --text: #2e2340;
+      --muted: #796a90;
+      --line: rgba(96, 72, 126, 0.18);
+      --primary: #6d45a6;
+      --primary-dark: #5a368f;
+      --card-shadow: 0 24px 60px rgba(84, 56, 121, 0.14);
+      --soft-shadow: 0 16px 40px rgba(84, 56, 121, 0.10);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: 1320px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 22% 18%, rgba(170, 139, 214, 0.16), transparent 26%),
+        radial-gradient(circle at 85% 20%, rgba(190, 168, 221, 0.18), transparent 24%),
+        linear-gradient(180deg, #f6f2f9 0%, #f2edf7 100%);
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      width: min(100%, var(--container));
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .logo {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .logo__title {
+      font-family: "Playfair Display", serif;
+      font-size: 44px;
+      line-height: 0.92;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      color: #5f418e;
+    }
+
+    .logo__subtitle {
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #7f6d99;
+      padding-left: 6px;
+      font-weight: 600;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav a {
+      font-size: 17px;
+      color: #4f4263;
+      font-weight: 500;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      height: 64px;
+      padding: 0 28px;
+      border-radius: 20px;
+      border: 1.5px solid rgba(102, 76, 138, 0.28);
+      background: rgba(255, 255, 255, 0.42);
+      backdrop-filter: blur(8px);
+      color: #4e3f64;
+      font-size: 17px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .header-cta svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      align-items: center;
+      gap: 18px;
+      min-height: 820px;
+    }
+
+    .hero__content {
+      max-width: 620px;
+      padding-top: 24px;
+    }
+
+    .eyebrow {
+      font-size: 16px;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #8a78a5;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      margin: 0 0 28px;
+      font-size: clamp(58px, 6vw, 84px);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+      color: #312443;
+      max-width: 640px;
+    }
+
+    .hero__text {
+      margin: 0 0 38px;
+      max-width: 610px;
+      font-size: 20px;
+      line-height: 1.75;
+      color: #6e6086;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn {
+      height: 68px;
+      padding: 0 30px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 19px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn--primary {
+      background: linear-gradient(180deg, #744ab2 0%, #653c9f 100%);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(102, 61, 160, 0.24);
+    }
+
+    .btn--secondary {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1.5px solid rgba(107, 81, 144, 0.18);
+      color: #55476b;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 26px;
+      max-width: 700px;
+    }
+
+    .feature {
+      text-align: center;
+      color: #65577e;
+    }
+
+    .feature__icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      border: 1px solid rgba(108, 84, 145, 0.14);
+      background: rgba(255, 255, 255, 0.38);
+      box-shadow: 0 8px 20px rgba(94, 67, 131, 0.06);
+    }
+
+    .feature__icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #7a5ea7;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feature__text {
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    /* HERO COLLAGE */
+    .hero__visual {
+      position: relative;
+      height: 760px;
+      min-height: 760px;
+    }
+
+    .card {
+      position: absolute;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+
+    .card--lavere {
+      width: 350px;
+      top: 12px;
+      left: 210px;
+      z-index: 2;
+    }
+
+    .card--aurora {
+      width: 200px;
+      top: 95px;
+      right: 0;
+      z-index: 3;
+    }
+
+    .card--serum {
+      width: 300px;
+      top: 240px;
+      left: 10px;
+      z-index: 5;
+    }
+
+    .card--lunea {
+      width: 360px;
+      top: 390px;
+      left: 265px;
+      z-index: 6;
+    }
+
+    .card--jar {
+      width: 320px;
+      bottom: 22px;
+      left: 60px;
+      z-index: 4;
+    }
+
+    .card--merci {
+      width: 205px;
+      top: 455px;
+      right: 18px;
+      z-index: 1;
+    }
+
+    .card--tag {
+      width: 160px;
+      bottom: 12px;
+      left: 255px;
+      z-index: 7;
+      box-shadow: var(--soft-shadow);
+      border-radius: 999px;
+    }
+
+    .hero__glow {
+      position: absolute;
+      inset: auto auto 40px 170px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(178, 142, 222, 0.18), transparent 68%);
+      filter: blur(18px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1280px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 44px;
+        min-height: auto;
+      }
+
+      .hero__content {
+        max-width: 100%;
+      }
+
+      .hero__visual {
+        width: min(100%, 760px);
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .page {
+        padding: 20px 18px 36px;
+      }
+
+      .header {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 26px;
+        flex-wrap: wrap;
+      }
+
+      .hero h1 {
+        font-size: clamp(46px, 8vw, 68px);
+      }
+
+      .hero__text {
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo__title {
+        font-size: 36px;
+      }
+
+      .header-cta {
+        height: 58px;
+        padding: 0 22px;
+        font-size: 16px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+        height: 62px;
+        font-size: 17px;
+      }
+
+      .features {
+        gap: 18px 10px;
+      }
+
+      .feature__text {
+        font-size: 14px;
+      }
+
+      .hero__visual {
+        height: 650px;
+        min-height: 650px;
+        transform: scale(0.88);
+        transform-origin: top center;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero__visual {
+        height: 520px;
+        min-height: 520px;
+        transform: scale(0.68);
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .eyebrow {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .hero__text {
+        font-size: 16px;
+        margin-bottom: 28px;
+      }
+
+      .features {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <a href="#" class="logo" aria-label="LavenderStudio">
+        <span class="logo__title">LAVENDER<br>STUDIO</span>
+        <span class="logo__subtitle">design studio</span>
+      </a>
+
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#about">О студии</a>
+        <a href="#process">Процесс</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <a class="header-cta" href="https://t.me/your_bot" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.6 4.2c.3-.1.6.2.5.5l-3.1 14.7c-.1.5-.7.7-1.1.4l-4.7-3.5-2.4 2.3c-.3.3-.9.1-.9-.4v-3.2l8.3-7.5c.2-.2-.1-.5-.3-.4l-10.3 6.5-4.4-1.4c-.5-.2-.5-.9 0-1.1l18.4-7.3z"/>
+        </svg>
+        Написать в Telegram
+      </a>
+    </header>
+
+    <section class="hero">
+      <div class="hero__content">
+        <div class="eyebrow">БУТИК-СТУДИЯ ДИЗАЙНА</div>
+
+        <h1>Дизайн, который помогает продукту продаваться</h1>
+
+        <p class="hero__text">
+          Создаём упаковку, этикетки, логотипы, брендбуки и инфографику для маркетплейсов,
+          которые выделяют ваш бренд и увеличивают продажи.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://t.me/your_bot" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 4.2c.3-.1.6.2.5.5l-3.1 14.7c-.1.5-.7.7-1.1.4l-4.7-3.5-2.4 2.3c-.3.3-.9.1-.9-.4v-3.2l8.3-7.5c.2-.2-.1-.5-.3-.4l-10.3 6.5-4.4-1.4c-.5-.2-.5-.9 0-1.1l18.4-7.3z"/>
+            </svg>
+            Обсудить проект в Telegram
+          </a>
+
+          <a class="btn btn--secondary" href="#portfolio">
+            Смотреть портфолио
+          </a>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7L12 3z"/>
+              </svg>
+            </div>
+            <div class="feature__text">Премиальный дизайн</div>
+          </div>
+
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="7"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <div class="feature__text">Фокус на продаваемости</div>
+          </div>
+
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 7v5l3 2"></path>
+                <circle cx="12" cy="12" r="8"></circle>
+              </svg>
+            </div>
+            <div class="feature__text">Соблюдаем сроки</div>
+          </div>
+
+          <div class="feature">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 20s-6-3.8-6-8.5A3.5 3.5 0 0 1 12 9a3.5 3.5 0 0 1 6 2.5C18 16.2 12 20 12 20z"></path>
+              </svg>
+            </div>
+            <div class="feature__text">Индивидуальный подход</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__glow"></div>
+
+        <div class="card card--lavere">
+          <img src="assets/lavere-card.png" alt="LAVÉRE botanical skincare" />
+        </div>
+
+        <div class="card card--aurora">
+          <img src="assets/aurora-box.png" alt="AURORA herbal tea packaging" />
+        </div>
+
+        <div class="card card--serum">
+          <img src="assets/serum-card.png" alt="Lumina serum promo card" />
+        </div>
+
+        <div class="card card--lunea">
+          <img src="assets/lunea-board.png" alt="LUNÉA brand identity board" />
+        </div>
+
+        <div class="card card--jar">
+          <img src="assets/nordic-bloom-jar.png" alt="Nordic Bloom body scrub" />
+        </div>
+
+        <div class="card card--merci">
+          <img src="assets/merci-card.png" alt="Merci beauty boutique card" />
+        </div>
+
+        <div class="card card--tag">
+          <img src="assets/thank-you-tag.png" alt="Спасибо за ваш выбор" />
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
