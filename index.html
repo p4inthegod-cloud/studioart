@@ -433,21 +433,22 @@
     .hero__visual {
       position: relative;
       min-width: 0;
-      height: 740px;
+      height: 760px;
       isolation: isolate;
+      overflow: visible;
     }
 
     .hero__visual::before {
       content: "";
       position: absolute;
-      inset: 2% -3% 4% 0;
-      border-radius: 50%;
+      inset: 4% -2% 0 4%;
       background:
-        radial-gradient(circle at 60% 14%, rgba(255, 255, 255, 0.92), transparent 13%),
-        radial-gradient(circle at 82% 13%, rgba(255, 255, 255, 0.68), transparent 5%),
-        radial-gradient(circle at 68% 38%, rgba(188, 153, 228, 0.30), transparent 30%),
-        radial-gradient(circle at 62% 66%, rgba(122, 90, 165, 0.16), transparent 38%);
-      filter: blur(1px);
+        radial-gradient(circle at 68% 24%, rgba(255, 255, 255, 0.92), transparent 14%),
+        radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.48), transparent 6%),
+        radial-gradient(circle at 62% 35%, rgba(201, 179, 230, 0.32), transparent 26%),
+        radial-gradient(circle at 72% 66%, rgba(130, 98, 176, 0.16), transparent 34%),
+        radial-gradient(circle at 52% 62%, rgba(241, 236, 249, 0.86), transparent 44%);
+      filter: blur(2px);
       z-index: -3;
       pointer-events: none;
     }
@@ -455,15 +456,12 @@
     .hero__visual::after {
       content: "";
       position: absolute;
-      right: 52px;
-      bottom: 74px;
-      width: 560px;
-      height: 126px;
-      border-radius: 999px;
-      background:
-        radial-gradient(ellipse at center, rgba(82, 52, 112, 0.20), transparent 70%),
-        linear-gradient(90deg, rgba(255,255,255,0.48), rgba(213,196,232,0.28), rgba(255,255,255,0.25));
-      filter: blur(10px);
+      right: 84px;
+      bottom: 36px;
+      width: 520px;
+      height: 120px;
+      background: radial-gradient(ellipse at center, rgba(76, 49, 111, 0.22), rgba(76, 49, 111, 0.08) 48%, transparent 74%);
+      filter: blur(14px);
       transform: rotate(-5deg);
       z-index: -2;
       pointer-events: none;
@@ -478,62 +476,65 @@
       object-fit: contain;
       user-select: none;
       -webkit-user-drag: none;
-      transform-origin: center bottom;
-      filter: drop-shadow(0 28px 44px rgba(74, 45, 108, 0.18));
+      transform-origin: center center;
       will-change: transform;
-    }
-
-    .hero-asset--box {
-      width: 184px;
-      top: 146px;
-      right: 18px;
-      z-index: 3;
-      transform: rotate(1deg);
+      background: transparent;
+      border: 0;
+      box-shadow: none;
     }
 
     .hero-asset--tube {
-      width: 284px;
+      width: 326px;
       top: 8px;
-      right: 138px;
-      z-index: 6;
-      transform: rotate(0.5deg);
-      filter: drop-shadow(0 34px 48px rgba(74, 45, 108, 0.17));
-    }
-
-    .hero-asset--serum {
-      width: 132px;
-      top: 232px;
-      right: 356px;
+      right: 172px;
       z-index: 7;
-      transform: rotate(-1.5deg);
-      filter: drop-shadow(0 30px 42px rgba(74, 45, 108, 0.22));
+      transform: rotate(1.2deg);
+      filter: drop-shadow(0 34px 46px rgba(78, 46, 115, 0.18));
     }
 
     .hero-asset--candle {
-      width: 254px;
-      right: 162px;
-      bottom: 142px;
+      width: 286px;
+      right: 164px;
+      bottom: 108px;
       z-index: 8;
-      transform: rotate(0deg);
-      filter: drop-shadow(0 32px 44px rgba(74, 45, 108, 0.20));
+      transform: rotate(-6deg);
+      filter: drop-shadow(0 28px 40px rgba(78, 46, 115, 0.19));
+    }
+
+    .hero-asset--box {
+      width: 212px;
+      top: 118px;
+      right: 50px;
+      z-index: 3;
+      transform: rotate(-2deg);
+      filter: drop-shadow(0 26px 38px rgba(78, 46, 115, 0.14));
+    }
+
+    .hero-asset--serum {
+      width: 142px;
+      left: 124px;
+      bottom: 174px;
+      z-index: 6;
+      transform: rotate(-6deg);
+      filter: drop-shadow(0 26px 36px rgba(78, 46, 115, 0.18));
     }
 
     .hero-asset--card {
-      width: 268px;
-      left: 138px;
-      bottom: 70px;
-      z-index: 9;
-      transform: rotate(-6deg);
-      filter: drop-shadow(0 24px 36px rgba(74, 45, 108, 0.13));
+      width: 310px;
+      left: 150px;
+      bottom: 40px;
+      z-index: 4;
+      transform: rotate(-11deg);
+      filter: drop-shadow(0 22px 30px rgba(78, 46, 115, 0.10));
     }
 
     .hero-asset--tag {
-      width: 150px;
-      right: 0;
-      bottom: 76px;
+      width: 124px;
+      right: 26px;
+      bottom: 56px;
       z-index: 9;
-      transform: rotate(5deg);
-      filter: drop-shadow(0 24px 34px rgba(74, 45, 108, 0.16));
+      transform: rotate(9deg);
+      filter: drop-shadow(0 18px 26px rgba(78, 46, 115, 0.15));
     }
 
     .services {
@@ -1337,18 +1338,18 @@
       .hero-badges { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 8px; }
 
       .hero__visual {
-        height: 520px;
-        margin: 0 auto -42px;
-        transform: scale(0.74);
+        height: 560px;
+        margin: 0 auto -38px;
+        transform: scale(0.76);
         transform-origin: top center;
       }
 
-      .hero-asset--tube { right: 132px; }
-      .hero-asset--box { right: 20px; }
-      .hero-asset--serum { right: 352px; }
-      .hero-asset--candle { right: 154px; }
-      .hero-asset--card { left: 128px; }
-      .hero-asset--tag { right: 0; }
+      .hero-asset--tube { right: 148px; }
+      .hero-asset--candle { right: 150px; bottom: 118px; }
+      .hero-asset--box { right: 40px; top: 122px; }
+      .hero-asset--serum { left: 120px; bottom: 184px; }
+      .hero-asset--card { left: 140px; bottom: 36px; }
+      .hero-asset--tag { right: 26px; bottom: 58px; }
 
       .services { padding: 22px 12px; }
       .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1373,7 +1374,13 @@
       .section { margin-top: 26px; }
       .section-title { font-size: 31px; }
       .section-copy { font-size: 14px; }
-      .hero__visual { height: 390px; margin: 0 auto -96px; transform: scale(0.58); }
+      .hero__visual { height: 420px; margin: 0 auto -92px; transform: scale(0.58); transform-origin: top center; }
+      .hero-asset--tube { right: 136px; top: 8px; }
+      .hero-asset--candle { right: 142px; bottom: 112px; }
+      .hero-asset--box { right: 46px; top: 124px; }
+      .hero-asset--serum { left: 126px; bottom: 184px; }
+      .hero-asset--card { left: 150px; bottom: 36px; }
+      .hero-asset--tag { right: 26px; bottom: 56px; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 324px; }
       .service-visual { transform: scale(0.78); transform-origin: right bottom; }
