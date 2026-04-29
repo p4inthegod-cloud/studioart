@@ -438,32 +438,88 @@
       overflow: visible;
     }
 
+    /*
+     * Decorative layers inside the hero visual
+     *
+     * A semi‑transparent glass platform and a soft lavender ribbon sit behind
+     * the products to ground the composition and add atmosphere. These
+     * elements are absolutely positioned within the hero container and take
+     * advantage of radial gradients and blur to achieve a subtle glow. They
+     * scale naturally with the hero due to the parent transform applied at
+     * responsive breakpoints. Negative z‑indices ensure they never overlap
+     * the product PNG assets. Pointer events are disabled since they are
+     * purely decorative.
+     */
+    .hero-platform {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotate(-4deg);
+      bottom: 28px;
+      width: 640px;
+      height: 160px;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at center,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(255, 255, 255, 0.6) 42%,
+          rgba(255, 255, 255, 0.2) 72%,
+          transparent 88%);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 22px 46px rgba(78, 46, 115, 0.28);
+      filter: blur(2px);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hero-ribbon {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotate(-8deg);
+      bottom: 200px;
+      width: 680px;
+      height: 200px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 60%,
+          rgba(220, 195, 245, 0.42) 0%,
+          rgba(182, 149, 219, 0.32) 50%,
+          rgba(146, 109, 187, 0.18) 76%,
+          transparent 94%);
+      filter: blur(50px);
+      z-index: -2;
+      pointer-events: none;
+    }
+
     .hero__visual::before {
       content: "";
       position: absolute;
       inset: 4% -2% 0 4%;
       background:
-        radial-gradient(circle at 68% 24%, rgba(255, 255, 255, 0.92), transparent 14%),
-        radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.48), transparent 6%),
-        radial-gradient(circle at 62% 35%, rgba(201, 179, 230, 0.32), transparent 26%),
-        radial-gradient(circle at 72% 66%, rgba(130, 98, 176, 0.16), transparent 34%),
-        radial-gradient(circle at 52% 62%, rgba(241, 236, 249, 0.86), transparent 44%);
-      filter: blur(2px);
-      z-index: -3;
+        radial-gradient(circle at 72% 24%, rgba(255, 255, 255, 0.94), transparent 16%),
+        radial-gradient(circle at 88% 18%, rgba(255, 255, 255, 0.58), transparent 8%),
+        radial-gradient(circle at 60% 32%, rgba(210, 189, 237, 0.42), transparent 30%),
+        radial-gradient(circle at 70% 66%, rgba(153, 120, 201, 0.18), transparent 36%),
+        radial-gradient(circle at 48% 64%, rgba(241, 236, 249, 0.88), transparent 48%);
+      filter: blur(2.5px);
+      z-index: -4;
       pointer-events: none;
     }
 
     .hero__visual::after {
       content: "";
       position: absolute;
-      right: 84px;
-      bottom: 36px;
-      width: 520px;
-      height: 120px;
-      background: radial-gradient(ellipse at center, rgba(76, 49, 111, 0.22), rgba(76, 49, 111, 0.08) 48%, transparent 74%);
-      filter: blur(14px);
-      transform: rotate(-5deg);
-      z-index: -2;
+      right: 60px;
+      bottom: 30px;
+      width: 640px;
+      height: 160px;
+      background:
+        radial-gradient(ellipse at center,
+          rgba(76, 49, 111, 0.22),
+          rgba(76, 49, 111, 0.1) 48%,
+          transparent 80%);
+      filter: blur(24px);
+      transform: rotate(-6deg);
+      z-index: -3;
       pointer-events: none;
     }
 
@@ -497,76 +553,73 @@
       /* increase width slightly and nudge rightwards for a denser grouping */
       width: 340px;
       top: auto;
-      /* lower the tube slightly to align better with the card and candle */
+      /* anchor the tube on a common baseline and shift it slightly right */
       bottom: 180px;
-      /* bring the tube closer to centre-right by reducing the right offset */
-      right: 180px;
+      right: 160px;
       z-index: 8;
       transform: rotate(-2deg);
-      filter: drop-shadow(0 34px 46px rgba(78, 46, 115, 0.18));
+      /* slightly stronger shadow for added depth */
+      filter: drop-shadow(0 36px 48px rgba(78, 46, 115, 0.20));
     }
 
     .hero-asset--candle {
       /* front‑right element – largest base object */
       width: 330px;
       top: auto;
-      /* place the candle lower and closer to the tube for overlap */
-      bottom: 40px;
-      right: 100px;
+      /* sit the candle lower with slight overlap towards the tube */
+      bottom: 34px;
+      right: 120px;
       z-index: 10;
       transform: rotate(-6deg);
-      filter: drop-shadow(0 32px 42px rgba(78, 46, 115, 0.19));
+      filter: drop-shadow(0 34px 46px rgba(78, 46, 115, 0.22));
     }
 
     .hero-asset--box {
       /* box sits behind the tube towards the right */
       width: 230px;
       top: auto;
-      /* lift the box slightly and pull it in closer to the tube */
-      bottom: 250px;
-      right: 80px;
+      /* position the box almost behind the tube */
+      bottom: 240px;
+      right: 100px;
       z-index: 5;
       transform: rotate(-3deg);
-      filter: drop-shadow(0 26px 38px rgba(78, 46, 115, 0.14));
+      filter: drop-shadow(0 28px 40px rgba(78, 46, 115, 0.16));
     }
 
     .hero-asset--serum {
       /* serum in front of the tube on the left */
       width: 180px;
       top: auto;
-      /* lift the serum to sit a bit higher and move it towards the tube */
-      bottom: 130px;
-      /* pull the serum further left so it peeks out clearly from the tube */
-      left: 120px;
+      /* lift the serum higher and move it nearer the tube */
+      bottom: 150px;
+      left: 150px;
       z-index: 9;
       transform: rotate(-8deg);
-      filter: drop-shadow(0 28px 36px rgba(78, 46, 115, 0.18));
+      filter: drop-shadow(0 30px 38px rgba(78, 46, 115, 0.20));
     }
 
     .hero-asset--card {
       /* card lays at the bottom left, partially under the candle */
-      width: 340px;
+      width: 300px;
       top: auto;
-      /* lower the card closer to the bottom and centre to tuck under the candle */
-      bottom: 40px;
-      /* position the card so it is visible beneath the candle and serum */
-      left: 80px;
+      /* raise the card and draw it in toward the centre beneath the candle */
+      bottom: 90px;
+      left: 120px;
       z-index: 7;
       transform: rotate(-15deg);
-      filter: drop-shadow(0 24px 32px rgba(78, 46, 115, 0.10));
+      filter: drop-shadow(0 26px 34px rgba(78, 46, 115, 0.14));
     }
 
     .hero-asset--tag {
       /* round tag near the candle on the right */
       width: 150px;
       top: auto;
-      /* align the tag height with the lowered candle and card */
-      bottom: 40px;
-      /* tuck the tag closer to the candle */
-      right: 10px;
+      /* lift the tag slightly and pull it inward towards the candle */
+      bottom: 50px;
+      right: 40px;
       z-index: 11;
       transform: rotate(8deg);
-      filter: drop-shadow(0 20px 28px rgba(78, 46, 115, 0.15));
+      filter: drop-shadow(0 22px 30px rgba(78, 46, 115, 0.17));
     }
 
     .services {
@@ -1376,13 +1429,31 @@
         transform-origin: top center;
       }
 
-      /* adjust hero asset positions on medium screens to maintain the tighter composition */
-      .hero-asset--tube { right: 108px; }
-      .hero-asset--candle { right: 90px; bottom: 98px; }
-      .hero-asset--box { right: 0; top: 132px; }
-      .hero-asset--serum { left: 90px; bottom: 194px; }
-      .hero-asset--card { left: 160px; bottom: 20px; }
-      .hero-asset--tag { right: 4px; bottom: 38px; }
+      /* adjust hero asset positions on medium screens to maintain the overlapping scene */
+      .hero-asset--tube {
+        bottom: 140px;
+        right: 120px;
+      }
+      .hero-asset--candle {
+        bottom: 26px;
+        right: 90px;
+      }
+      .hero-asset--box {
+        bottom: 180px;
+        right: 76px;
+      }
+      .hero-asset--serum {
+        bottom: 114px;
+        left: 114px;
+      }
+      .hero-asset--card {
+        bottom: 72px;
+        left: 110px;
+      }
+      .hero-asset--tag {
+        bottom: 38px;
+        right: 30px;
+      }
 
       .services { padding: 22px 12px; }
       .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1409,12 +1480,30 @@
       .section-copy { font-size: 14px; }
       .hero__visual { height: 420px; margin: 0 auto -92px; transform: scale(0.58); transform-origin: top center; }
       /* adjust hero asset positions on small screens to preserve the overlapping scene */
-      .hero-asset--tube { right: 96px; top: 8px; }
-      .hero-asset--candle { right: 82px; bottom: 92px; }
-      .hero-asset--box { right: 0; top: 144px; }
-      .hero-asset--serum { left: 96px; bottom: 194px; }
-      .hero-asset--card { left: 170px; bottom: 20px; }
-      .hero-asset--tag { right: 6px; bottom: 36px; }
+      .hero-asset--tube {
+        bottom: 100px;
+        right: 96px;
+      }
+      .hero-asset--candle {
+        bottom: 20px;
+        right: 70px;
+      }
+      .hero-asset--box {
+        bottom: 140px;
+        right: 58px;
+      }
+      .hero-asset--serum {
+        bottom: 90px;
+        left: 90px;
+      }
+      .hero-asset--card {
+        bottom: 60px;
+        left: 70px;
+      }
+      .hero-asset--tag {
+        bottom: 30px;
+        right: 20px;
+      }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 324px; }
       .service-visual { transform: scale(0.78); transform-origin: right bottom; }
@@ -1495,6 +1584,9 @@
         </div>
 
         <div class="hero__visual reveal is-visible" aria-label="Визуальная композиция упаковки Lavender Studio">
+          <!-- decorative elements: platform and ribbon added for depth and grounding -->
+          <div class="hero-platform" aria-hidden="true"></div>
+          <div class="hero-ribbon" aria-hidden="true"></div>
           <img src="assets/box.png" class="hero-asset hero-asset--box" alt="">
           <img src="assets/tube.png" class="hero-asset hero-asset--tube" alt="">
           <img src="assets/serum.png" class="hero-asset hero-asset--serum" alt="">
